@@ -78,7 +78,10 @@ resource-download/
 ├── offscreen/              # 剪贴板兜底文档
 ├── icons/                  # 图标资产（16/32/48/128 + SVG 源）
 ├── tests/                  # 结构巡检 + E2E + 本地样例页
-└── docs/                   # 契约文档、跨浏览器说明与截图
+├── docs/                   # 契约文档、跨浏览器说明与截图
+├── dist/                   # 打包产物（tests/package.mjs 生成）
+├── LICENSE                 # MIT
+└── .gitignore / .gitattributes
 ```
 
 ## ⚙️ 设置项一览
@@ -121,7 +124,7 @@ node tests/e2e.mjs --browser=chrome --headed --verbose   # 换 Chrome / 有头�
 * 扫描器专项 9 项：初始 `idle` 零采集、无效标签页结构化错误、取消扫描、自定义超时、设置往返。
 * 端到端 42 项：真实点击 → 12 张卡片 → 批量下载 → **校验文件落盘到 `images/` `videos/` `audios/`**、
   失败路径（`done` 含 `failed` 语义回归防护）、设置页读写与主题即时生效、零未捕获异常。
-* 打包 27 个文件，无 `tests/` `docs/` `dev-mock.js` `*.py` 泄漏；解压后可被 Edge 正常加载。
+* 打包 28 个文件（含 `LICENSE`），无 `tests/` `docs/` `dev-mock.js` `*.py` 泄漏；解压后可被 Edge 正常加载。
 
 > 当前状态：**全部 4 套校验通过（51 项断言）**。
 
