@@ -1,0 +1,14 @@
+{
+  "extName": {
+    "message": "Edge Resource Downloader",
+    "description": "Extension name"
+  },
+  "extShortName": {
+    "message": "Resource Downloader",
+    "description": "Short name for compact UI"
+  },
+  "extDescription": {
+    "message": "Scan the current page for downloadable videos, images and audio, then pick what to download. Nothing is collected until you click.",
+    "description": "Extension description"
+  }
+}

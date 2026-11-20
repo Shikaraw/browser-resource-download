@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark light">
+  <title>设置 · Edge Resource Downloader</title>
+  <link rel="stylesheet" href="../lib/theme.css">
+  <link rel="stylesheet" href="./options.css">
+
+</head>
+<body>
+  <div class="ambient" aria-hidden="true"></div>
+
+  <div class="layout">
+    <!-- ==================== 左侧导航 ==================== -->
+    <aside id="side-nav" class="sidenav card glass" aria-label="设置导航">
+      <div class="nav-brand">
+        <span class="logo" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 4.4v8.2"></path>
+            <path d="M8.8 9.6 12 12.8l3.2-3.2"></path>
+            <path d="M5.2 15.4v1.4a2.7 2.7 0 0 0 2.7 2.7h8.2a2.7 2.7 0 0 0 2.7-2.7v-1.4"></path>
+          </svg>
+        </span>
+        <div class="nav-brand-text">
+          <h1 class="truncate">资源下载器</h1>
+          <span class="ver">设置 · v<span id="app-version">1.0.0</span></span>
+        </div>
+      </div>
+
+      <nav class="nav-list" aria-label="设置分节">
+        <a class="nav-item" href="#scan" data-target="scan">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="10.5" cy="10.5" r="6.4"></circle>
+            <path d="M15.5 15.5 21 21"></path>
+            <path d="M10.5 7.9v2.6M9.2 10.5h2.6"></path>
+          </svg>
+          <span class="nav-text">扫描范围</span>
+          <span class="nav-mark" aria-hidden="true"></span>
+        </a>
+        <a class="nav-item" href="#downloads" data-target="downloads">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 3.4v9.6"></path>
+            <path d="M8.4 9.4 12 13l3.6-3.6"></path>
+            <path d="M4.5 16.4v1.2A2.4 2.4 0 0 6.9 20h10.2a2.4 2.4 0 0 2.4-2.4v-1.2"></path>
+          </svg>
+          <span class="nav-text">下载行为</span>
+          <span class="nav-mark" aria-hidden="true"></span>
+        </a>
+        <a class="nav-item" href="#appearance" data-target="appearance">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4.2"></circle>
+            <path d="M12 2.6v2.1M12 19.3v2.1M2.6 12h2.1M19.3 12h2.1M5.3 5.3l1.5 1.5M17.2 17.2l1.5 1.5M18.7 5.3l-1.5 1.5M6.8 17.2l-1.5 1.5"></path>
+          </svg>
+          <span class="nav-text">外观</span>
+          <span class="nav-mark" aria-hidden="true"></span>
+        </a>
+        <a class="nav-item" href="#notifications" data-target="notifications">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M18 8.6A6 6 0 0 0 6 8.6c0 6.9-3 8.9-3 8.9h18s-3-2-3-8.9"></path>
+            <path d="M13.8 20.6a2.1 2.1 0 0 1-3.6 0"></path>
+          </svg>
+          <span class="nav-text">通知与快捷键</span>
+          <span class="nav-mark" aria-hidden="true"></span>
+        </a>
+        <a class="nav-item" href="#privacy" data-target="privacy">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 21.4s7.4-3.9 7.4-9.7V5.6L12 2.6 4.6 5.6V11.7c0 5.8 7.4 9.7 7.4 9.7"></path>
+            <path d="M8.9 11.4l2.2 2.2 4-4.2"></path>
+          </svg>
+          <span class="nav-text">数据与隐私</span>
+          <span class="nav-mark" aria-hidden="true"></span>
+        </a>
+        <a class="nav-item" href="#about" data-target="about">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="8.8"></circle>
+            <path d="M12 15.8v-4.4"></path>
+            <path d="M12 8.4h.01"></path>
+          </svg>
+          <span class="nav-text">关于</span>
+          <span class="nav-mark" aria-hidden="true"></span>
+        </a>
+      </nav>
+
+      <div class="nav-foot">
+        <span class="nav-hint">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20 6.4 10.3 16.1a3 3 0 0 1-4.2 0L3.4 13.4"></path>
+            <path d="M20 6.4 16.4 18.6l-2.7-6.6-7.3-5.6"></path>
+          </svg>
+          所有更改自动保存
+        </span>
+      </div>
+    </aside>
+
+    <!-- ==================== 右侧内容区 ==================== -->
+    <main class="main" id="main">
+      <header class="page-head">
+        <div class="grow">
+          <p class="eyebrow">Preferences</p>
+          <h1 class="page-title">设置</h1>
+          <p class="head-sub">调整扫描范围、下载行为与界面外观。所有更改都会自动保存，且仅保存在本机。</p>
+        </div>
+        <div class="privacy-chip" aria-hidden="true">
+          <span class="pc-icon">
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 21.4s7.4-3.9 7.4-9.7V5.6L12 2.6 4.6 5.6V11.7c0 5.8 7.4 9.7 7.4 9.7"></path>
+              <path d="M8.9 11.4l2.2 2.2 4-4.2"></path>
+            </svg>
+          </span>
+          <span class="pc-text"><b>隐私优先</b><span>不采集 · 不上传</span></span>
+        </div>
+      </header>
+
+      <!-- ==================== 扫描范围 ==================== -->
+      <section class="section" id="scan" data-section aria-labelledby="scan-title">
+        <header class="sec-head">
+          <span class="sec-icon" data-tone="brand" aria-hidden="true">
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="10.5" cy="10.5" r="6.4"></circle>
+              <path d="M15.5 15.5 21 21"></path>
+              <path d="M10.5 7.9v2.6M9.2 10.5h2.6"></path>
+            </svg>
+          </span>
+          <div class="grow">
+            <h2 id="scan-title">扫描范围</h2>
+            <p class="sec-desc">决定点击「扫描本页资源」后收集哪些内容。范围越大，扫描耗时越长。</p>
+          </div>
+        </header>
+
+        <div class="card glass sec-card">
+          <div class="card-head">
+            <span class="card-title">资源类型</span>
+            <span class="tag">按页面已有内容判断</span>
+          </div>
+
+          <div class="setting">
+            <div class="setting-main">
+              <label class="setting-label" for="includeMediaTags">媒体标签</label>
+              <p class="field-hint">扫描 <code>&lt;video&gt;</code> / <code>&lt;audio&gt;</code> / <code>&lt;source&gt;</code> 上声明的资源。</p>
+            </div>
+            <div class="setting-ctl">
+              <label class="switch" aria-label="扫描媒体标签">
+                <input type="checkbox" id="includeMediaTags" checked>
+                <span class="track"></span>
+                <span class="thumb"></span>
+              </label>
+            </div>
+          </div>
+
+          <div class="setting">
+            <div class="setting-main">
+              <label class="setting-label" for="includeBackgroundImages">CSS 背景图</label>
+              <p class="field-hint">解析 <code>background-image</code> 中的图片地址，个别样式表跨域时会较慢。</p>
+            </div>
+            <div class="setting-ctl">
+              <label class="switch" aria-label="扫描 CSS 背景图">
+                <input type="checkbox" id="includeBackgroundImages" checked>
+                <span class="track"></span>
+                <span class="thumb"></span>
+              </label>
+            </div>
+          </div>
+
+          <div class="setting">
+            <div class="setting-main">
+              <label class="setting-label" for="includeDataUrls">内联 Data URL</label>
+              <p class="field-hint">包含 base64 内联资源，体积通常较大，下载后为原始二进制。</p>
+            </div>
+            <div class="setting-ctl">
+              <label class="switch" aria-label="扫描内联 Data URL">
+                <input type="checkbox" id="includeDataUrls">
+                <span class="track"></span>
+                <span class="thumb"></span>
+              </label>
+            </div>
+          </div>
+
+          <div class="setting">
+            <div class="setting-main">
+              <label class="setting-label" for="includeStreams">流媒体清单</label>
+              <p class="field-hint">识别 HLS（<code>.m3u8</code>）与 DASH（<code>.mpd</code>）分片清单，便于后续合并下载。</p>
+            </div>
+            <div class="setting-ctl">
+              <label class="switch" aria-label="扫描流媒体清单">
+                <input type="checkbox" id="includeStreams" checked>
+                <span class="track"></span>
+                <span class="thumb"></span>
+              </label>
+            </div>
+          </div>
+
+          <div class="setting">
+            <div class="setting-main">
+              <label class="setting-label" for="includeIframes">iframe 内资源</label>
+              <p class="field-hint">同时扫描同源 iframe 中的内容，会增加扫描耗时。</p>
+            </div>
+            <div class="setting-ctl">
+              <label class="switch" aria-label="扫描 iframe 内资源">
+                <input type="checkbox" id="includeIframes">
+                <span class="track"></span>
+                <span class="thumb"></span>
+              </label>
+            </div>
+          </div>
+
+          <div class="setting">
+            <div class="setting-main">
+              <label class="setting-label" for="includeBlobMedia">
+                已加载的 Blob 媒体
+                <span class="pill warn">实验性</span>
+              </label>
+              <p class="field-hint">尝试导出 <code>blob:</code> 与 MSE 媒体，部分站点可能失败或得到空文件。</p>
+            </div>
+            <div class="setting-ctl">
+              <label class="switch" aria-label="扫描已加载的 Blob 媒体">
+                <input type="checkbox" id="includeBlobMedia">
+                <span class="track"></span>
+                <span class="thumb"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="card glass sec-card">
+          <div class="card-head">
+            <span class="card-title">过滤与性能</span>
+            <span class="tag">越小越快</span>
+          </div>
+
+          <div class="setting wide">
+            <div class="setting-main">
+              <div class="row">
+                <label class="setting-label" for="minImageSize">最小资源尺寸</label>
+                <span class="pill dim-pill" id="min-size-badge">48 px</span>
+              </div>
+              <p class="field-hint">小于该尺寸的图片会被忽略，用于过滤 1×1 埋点与装饰性图标。</p>
+            </div>
+            <div class="setting-ctl wide-ctl">
+              <div class="inline-ctl">
+                <div class="num">
+                  <input id="minImageSize" class="input num-input" type="number" min="0" max="4096" step="1" value="48" inputmode="numeric" aria-describedby="min-size-hint">
+                  <span class="num-unit">px</span>
+                </div>
+                <div class="chips" id="min-size-chips" role="group" aria-label="最小尺寸预设">
+                  <button type="button" class="chip" data-value="16" aria-pressed="false">16</button>
+                  <button type="button" class="chip" data-value="48" aria-pressed="true">48</button>
+                  <button type="button" class="chip" data-value="128" aria-pressed="false">128</button>
+                  <button type="button" class="chip" data-value="256" aria-pressed="false">256</button>
+                </div>
+              </div>
+              <p class="field-hint" id="min-size-hint">填 0 表示不过滤任何尺寸。</p>
+            </div>
+          </div>
+
+          <div class="setting wide">
+            <div class="setting-main">
+              <div class="row">
+                <label class="setting-label" for="scanTimeoutMs">扫描超时</label>
+                <span class="spacer"></span>
+                <output class="value-badge" id="scan-timeout-out" for="scanTimeoutMs">15 秒</output>
+              </div>
+              <p class="field-hint">到达时限后立即返回已收集到的资源，避免卡在加载缓慢的页面。</p>
+            </div>
+            <div class="setting-ctl wide-ctl">
+              <input class="range" id="scanTimeoutMs" type="range" min="3000" max="30000" step="1000" value="15000" aria-label="扫描超时（秒）">
+              <div class="range-ticks" aria-hidden="true"><span>3 秒</span><span>15 秒</span><span>30 秒</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== 下载行为 ==================== -->
+      <section class="section" id="downloads" data-section aria-labelledby="downloads-title">
+        <header class="sec-head">
+          <span class="sec-icon" data-tone="image" aria-hidden="true">
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3.4v9.6"></path>
+              <path d="M8.4 9.4 12 13l3.6-3.6"></path>
+              <path d="M4.5 16.4v1.2A2.4 2.4 0 0 6.9 20h10.2a2.4 2.4 0 0 2.4-2.4v-1.2"></path>
+            </svg>
+          </span>
+          <div class="grow">
+            <h2 id="downloads-title">下载行为</h2>
+            <p class="sec-desc">决定文件保存到哪里，以及同名文件、并发数与体积上限的处理方式。</p>
+          </div>
+        </header>
+
+        <div class="card glass sec-card">
+          <div class="card-head">
+            <span class="card-title">保存位置</span>
+            <span class="tag">相对下载目录</span>
+          </div>
+
+          <div class="setting wide">
+            <div class="setting-main">
+              <label class="setting-label" for="saveSubfolder">保存子目录</label>
+              <p class="field-hint">
+                相对浏览器默认下载目录，不能包含
+                <code>/</code> <code>\</code> <code>:</code> <code>*</code> <code>?</code>
+                <code>"</code> <code>&lt;</code> <code>&gt;</code> <code>|</code>
+              </p>
+            </div>
+            <div class="setting-ctl wide-ctl">
+              <input id="saveSubfolder" class="input" type="text" value="EdgeResourceDownload" spellcheck="false" autocomplete="off" aria-describedby="save-subfolder-error">
+              <p class="field-hint invalid-hint hidden" id="save-subfolder-error" role="alert">包含非法字符，本次修改已忽略。</p>
+              <div class="path-preview" id="folder-preview">
+                <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M3.4 7.6A1.8 1.8 0 0 5.2 5.8h4.4l2 2.2h6.9a1.8 1.8 0 0 1.8 1.8v8a1.8 1.8 0 0 1-1.8 1.8H5.2A1.8 1.8 0 0 3.4 17.6z"></path>
+                  <path d="M8.6 5.8 7.4 3.4H5.2A1.8 1.8 0 0 3.4 5.2v2.4"></path>
+                </svg>
+                <span class="mono truncate" id="folder-preview-text">下载 / EdgeResourceDownload</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="setting">
+            <div class="setting-main">
+              <label class="setting-label" for="organizeByType">按类型分组</label>
+              <p class="field-hint">自动创建 <code>videos/</code> <code>images/</code> <code>audios/</code> <code>others/</code> 子文件夹。</p>
+            </div>
+            <div class="setting-ctl">
+              <label class="switch" aria-label="按类型分组">
+                <input type="checkbox" id="organizeByType" checked>
+                <span class="track"></span>
+                <span class="thumb"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="card glass sec-card">
+          <div class="card-head">
+            <span class="card-title">传输策略</span>
+            <span class="tag">下载前生效</span>
+          </div>
+
+          <div class="setting">
+            <div class="setting-main">
+              <label class="setting-label" for="conflictStrategy">同名文件</label>
+              <p class="field-hint">目标目录已存在同名文件时的处理方式。</p>
+            </div>
+            <div class="setting-ctl">
+              <select class="select" id="conflictStrategy" aria-label="同名文件处理方式">
+                <option value="uniquify">自动重命名（推荐）</option>
+                <option value="overwrite">覆盖同名文件</option>
+                <option value="prompt">每次询问</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="setting">
+            <div class="setting-main">
+              <label class="setting-label" for="concurrency">同时下载数</label>
+              <p class="field-hint">并发越高越快，但容易被站点限速或占用过多内存。</p>
+            </div>
+            <div class="setting-ctl">
+              <select class="select" id="concurrency" aria-label="同时下载数">
+                <option value="1">1（最稳）</option>
+                <option value="2">2</option>
+                <option value="3" selected>3（推荐）</option>
+                <option value="5">5</option>
+                <option value="8">8（最快）</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="setting">
+            <div class="setting-main">
+              <label class="setting-label" for="maxFileSize">单文件体积上限</label>
+              <p class="field-hint">超过上限的资源会被跳过，避免误下载超大文件。</p>
+            </div>
+            <div class="setting-ctl">
+              <select class="select" id="maxFileSize" aria-label="单文件体积上限">
+                <option value="0">不限制</option>
+                <option value="10485760">10 MB</option>
+                <option value="52428800">50 MB</option>
+                <option value="209715200" selected>200 MB</option>
+                <option value="1073741824">1 GB</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="setting">
+            <div class="setting-main">
+              <label class="setting-label" for="autoSelectAll">扫描后自动全选</label>
+              <p class="field-hint">扫描完成后默认勾选全部资源，仍可手动取消个别条目。</p>
+            </div>
+            <div class="setting-ctl">
+              <label class="switch" aria-label="扫描后自动全选">
+                <input type="checkbox" id="autoSelectAll">
+                <span class="track"></span>
+                <span class="thumb"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== 外观 ==================== -->
+      <section class="section" id="appearance" data-section aria-labelledby="appearance-title">
+        <header class="sec-head">
+          <span class="sec-icon" data-tone="audio" aria-hidden="true">
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="4.2"></circle>
+              <path d="M12 2.6v2.1M12 19.3v2.1M2.6 12h2.1M19.3 12h2.1M5.3 5.3l1.5 1.5M17.2 17.2l1.5 1.5M18.7 5.3l-1.5 1.5M6.8 17.2l-1.5 1.5"></path>
+            </svg>
+          </span>
+          <div class="grow">
+            <h2 id="appearance-title">外观</h2>
+            <p class="sec-desc">切换后立即预览，popup 面板会同步应用同一套主题。</p>
+          </div>
+        </header>
+
+        <div class="card glass sec-card">
+          <div class="card-head">
+            <span class="card-title">主题</span>
+            <span class="tag" id="theme-current">跟随系统</span>
+          </div>
+
+          <div id="theme-cards" class="theme-cards" role="group" aria-label="主题">
+            <button type="button" class="theme-card" data-value="system" aria-pressed="true">
+              <span class="tc-preview" aria-hidden="true">
+                <span class="tc-bar"></span>
+                <span class="tc-lines"><i></i><i></i><i></i></span>
+                <span class="tc-glyph" data-glyph="system">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2.8" y="4.2" width="18.4" height="12" rx="2.2"></rect>
+                    <path d="M9 20.2h6"></path>
+                  </svg>
+                </span>
+              </span>
+              <span class="tc-meta">
+                <span class="tc-name">跟随系统</span>
+                <span class="tc-sub">随操作系统切换</span>
+              </span>
+              <span class="tc-check" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.6 9.4 17 19 7"></path></svg>
+              </span>
+            </button>
+
+            <button type="button" class="theme-card" data-value="light" aria-pressed="false">
+              <span class="tc-preview" aria-hidden="true">
+                <span class="tc-bar"></span>
+                <span class="tc-lines"><i></i><i></i><i></i></span>
+                <span class="tc-glyph" data-glyph="light">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="4"></circle>
+                    <path d="M12 3.4v2M12 18.6v2M3.4 12h2M18.6 12h2M6 6l1.4 1.4M16.6 16.6 18 18M18 6l-1.4 1.4M7.4 16.6 6 18"></path>
+                  </svg>
+                </span>
+              </span>
+              <span class="tc-meta">
+                <span class="tc-name">浅色</span>
+                <span class="tc-sub">始终使用亮色</span>
+              </span>
+              <span class="tc-check" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.6 9.4 17 19 7"></path></svg>
+              </span>
+            </button>
+
+            <button type="button" class="theme-card" data-value="dark" aria-pressed="false">
+              <span class="tc-preview" aria-hidden="true">
+                <span class="tc-bar"></span>
+                <span class="tc-lines"><i></i><i></i><i></i></span>
+                <span class="tc-glyph" data-glyph="dark">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 14.4A8.4 8.4 0 0 9.6 3.9 9 9 0 0 0 20 14.4z"></path>
+                    <path d="M15.4 17.6 4 6.2"></path>
+                  </svg>
+                </span>
+              </span>
+              <span class="tc-meta">
+                <span class="tc-name">深色</span>
+                <span class="tc-sub">始终使用暗色</span>
+              </span>
+              <span class="tc-check" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.6 9.4 17 19 7"></path></svg>
+              </span>
+            </button>
+          </div>
+
+          <div class="setting">
+            <div class="setting-main">
+              <span class="setting-label">popup 默认视图</span>
+              <p class="field-hint">打开主面板时资源卡片的排列方式，可随时在里面切换。</p>
+            </div>
+            <div class="setting-ctl">
+              <div class="segmented" id="view-seg" role="group" aria-label="popup 默认视图">
+                <button type="button" data-value="grid" aria-pressed="true">
+                  <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect x="3.6" y="3.6" width="7" height="7" rx="1.6"></rect>
+                    <rect x="13.4" y="3.6" width="7" height="7" rx="1.6"></rect>
+                    <rect x="3.6" y="13.4" width="7" height="7" rx="1.6"></rect>
+                    <rect x="13.4" y="13.4" width="7" height="7" rx="1.6"></rect>
+                  </svg>
+                  网格
+                </button>
+                <button type="button" data-value="list" aria-pressed="false">
+                  <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M4 6.6h16M4 12h16M4 17.4h16"></path>
+                  </svg>
+                  列表
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== 通知与快捷键 ==================== -->
+      <section class="section" id="notifications" data-section aria-labelledby="notifications-title">
+        <header class="sec-head">
+          <span class="sec-icon" data-tone="video" aria-hidden="true">
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 8.6A6 6 0 0 0 6 8.6c0 6.9-3 8.9-3 8.9h18s-3-2-3-8.9"></path>
+              <path d="M13.8 20.6a2.1 2.1 0 0 1-3.6 0"></path>
+            </svg>
+          </span>
+          <div class="grow">
+            <h2 id="notifications-title">通知与快捷键</h2>
+            <p class="sec-desc">控制下载完成提醒、右键菜单入口，以及快捷键的查看与修改。</p>
+          </div>
+        </header>
+
+        <div class="card glass sec-card">
+          <div class="setting">
+            <div class="setting-main">
+              <label class="setting-label" for="notifyOnComplete">下载完成通知</label>
+              <p class="field-hint">批量任务结束时弹出系统通知，汇总成功与失败数量。</p>
+            </div>
+            <div class="setting-ctl">
+              <label class="switch" aria-label="下载完成通知">
+                <input type="checkbox" id="notifyOnComplete" checked>
+                <span class="track"></span>
+                <span class="thumb"></span>
+              </label>
+            </div>
+          </div>
+
+          <div class="setting">
+            <div class="setting-main">
+              <label class="setting-label" for="enableContextMenu">右键菜单入口</label>
+              <p class="field-hint">在页面右键菜单中显示「扫描本页资源」，点击后才开始扫描。</p>
+            </div>
+            <div class="setting-ctl">
+              <label class="switch" aria-label="右键菜单入口">
+                <input type="checkbox" id="enableContextMenu" checked>
+                <span class="track"></span>
+                <span class="thumb"></span>
+              </label>
+            </div>
+          </div>
+
+          <div class="setting">
+            <div class="setting-main">
+              <label class="setting-label" for="rememberFilters">记住筛选与视图</label>
+              <p class="field-hint">下次打开 popup 时恢复上次的类型筛选、搜索与排序。</p>
+            </div>
+            <div class="setting-ctl">
+              <label class="switch" aria-label="记住筛选与视图">
+                <input type="checkbox" id="rememberFilters" checked>
+                <span class="track"></span>
+                <span class="thumb"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="shortcut-card card glass">
+          <div class="shortcut-row">
+            <div class="setting-main">
+              <span class="setting-label">打开资源扫描面板</span>
+              <p class="field-hint">在任意网页按下快捷键即可唤起 popup（同样不会自动扫描）。</p>
+            </div>
+            <div class="keys" aria-label="快捷键 Alt + Shift + R">
+              <kbd>Alt</kbd><span class="key-plus" aria-hidden="true">+</span>
+              <kbd>Shift</kbd><span class="key-plus" aria-hidden="true">+</span>
+              <kbd>R</kbd>
+            </div>
+          </div>
+          <div class="shortcut-foot">
+            <span class="dim">快捷键由浏览器统一管理，可随时自定义或停用。</span>
+            <button type="button" class="btn sm" id="btn-shortcuts">
+              <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M14.4 4.6h5v5"></path>
+                <path d="M19.4 4.6 12 12"></path>
+                <path d="M10.4 18.6h-3.8A2.6 2.6 0 0 4 16V13"></path>
+                <path d="M13.6 18.6h3.8A2.6 2.6 0 0 20 16v-3"></path>
+              </svg>
+              前往快捷键设置
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== 数据与隐私 ==================== -->
+      <section class="section" id="privacy" data-section aria-labelledby="privacy-title">
+        <header class="sec-head">
+          <span class="sec-icon" data-tone="ok" aria-hidden="true">
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 21.4s7.4-3.9 7.4-9.7V5.6L12 2.6 4.6 5.6V11.7c0 5.8 7.4 9.7 7.4 9.7"></path>
+              <path d="M8.9 11.4l2.2 2.2 4-4.2"></path>
+            </svg>
+          </span>
+          <div class="grow">
+            <h2 id="privacy-title">数据与隐私</h2>
+            <p class="sec-desc">设置、扫描历史全部保存在本机，可随时导出、清空或恢复默认。</p>
+          </div>
+        </header>
+
+        <div class="privacy-card card glass">
+          <div class="privacy-head">
+            <span class="privacy-icon" aria-hidden="true">
+              <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 21.4s7.4-3.9 7.4-9.7V5.6L12 2.6 4.6 5.6V11.7c0 5.8 7.4 9.7 7.4 9.7"></path>
+                <path d="M8.9 11.4l2.2 2.2 4-4.2"></path>
+              </svg>
+            </span>
+            <div class="grow">
+              <h3>隐私优先 · 完全本地</h3>
+              <p>本扩展不收集、不上传、不分享任何浏览数据，也没有任何第三方统计脚本。</p>
+            </div>
+            <span class="tag ok">本地存储</span>
+          </div>
+          <ul class="privacy-list">
+            <li>
+              <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.6 9.4 17 19 7"></path></svg>
+              <span><b>不采集</b>：安装后不会自动扫描、记录或后台上报任何页面内容。</span>
+            </li>
+            <li>
+              <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.6 9.4 17 19 7"></path></svg>
+              <span><b>仅在你点击时</b>：只有手动点击「扫描本页资源」或右键菜单，才会注入脚本读取当前页面。</span>
+            </li>
+            <li>
+              <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.6 9.4 17 19 7"></path></svg>
+              <span><b>不联网</b>：设置与扫描历史只写入本机 <code>chrome.storage.local</code>，卸载扩展即一并删除。</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card glass sec-card">
+          <div class="card-head">
+            <span class="card-title">本地存储</span>
+            <span class="tag" id="storage-mode-tag">chrome.storage.local</span>
+          </div>
+
+          <div class="setting wide">
+            <div class="setting-main">
+              <div class="row">
+                <span class="setting-label">存储用量</span>
+                <button type="button" class="btn ghost icon sm" id="btn-refresh-usage" aria-label="刷新存储用量" title="刷新存储用量">
+                  <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M20 12a8 8 0 1 1-2.4 5.7"></path>
+                    <path d="M4 12a8 8 0 0 1 13.2-6.4"></path>
+                    <path d="M17.6 3v3.2h-3.2"></path>
+                    <path d="M6.4 21v-3.2h3.2"></path>
+                  </svg>
+                </button>
+                <span class="spacer"></span>
+                <span class="usage-value mono" id="storage-usage">—</span>
+                <span class="dim mono" id="storage-quota">/ —</span>
+              </div>
+              <p class="field-hint">包含全部设置与最近一次扫描摘要，通常不足 10 KB。</p>
+            </div>
+            <div class="setting-ctl wide-ctl">
+              <div class="progress"><i id="storage-bar"></i></div>
+              <div class="usage-meta">
+                <span>扫描历史：<b id="history-count">—</b> 条</span>
+                <span>上限：<b id="storage-limit">—</b></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card glass sec-card">
+          <div class="card-head">
+            <span class="card-title">备份与清理</span>
+            <span class="tag">导出 / 导入 JSON</span>
+          </div>
+
+          <div class="setting">
+            <div class="setting-main">
+              <span class="setting-label">导出设置</span>
+              <p class="field-hint">把当前全部设置下载为 JSON 文件，方便备份或迁移到其他浏览器。</p>
+            </div>
+            <div class="setting-ctl">
+              <button type="button" class="btn" id="btn-export">
+                <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 3.4v10.4"></path>
+                  <path d="M8.2 9.8 12 13.6l3.8-3.8"></path>
+                  <path d="M4.6 16v2.4A2.2 2.2 0 0 6.8 20h10.4a2.2 2.2 0 0 2.2-2.2V16"></path>
+                </svg>
+                导出 JSON
+              </button>
+            </div>
+          </div>
+
+          <div class="setting">
+            <div class="setting-main">
+              <span class="setting-label">导入设置</span>
+              <p class="field-hint">读取导出的 JSON 文件，非法字段会被自动忽略，导入后可继续修改。</p>
+            </div>
+            <div class="setting-ctl">
+              <button type="button" class="btn" id="btn-import">
+                <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 20.6V10.2"></path>
+                  <path d="M8.2 14.2 12 10.4l3.8 3.8"></path>
+                  <path d="M4.6 8V5.6A2.2 2.2 0 0 6.8 3.4h10.4A2.2 2.2 0 0 19.4 5.6V8"></path>
+                </svg>
+                导入 JSON
+              </button>
+            </div>
+          </div>
+
+          <div class="setting">
+            <div class="setting-main">
+              <span class="setting-label">清空扫描历史</span>
+              <p class="field-hint">删除本机保存的扫描摘要记录，不会影响你的设置。</p>
+            </div>
+            <div class="setting-ctl">
+              <button type="button" class="btn" id="btn-clear-history">
+                <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M4.6 6.6h14.8"></path>
+                  <path d="M6.8 6.6V5A1.6 1.6 0 0 8.4 3.4h7.2A1.6 1.6 0 0 17.2 5v1.6"></path>
+                  <path d="M9 3.4h6"></path>
+                  <path d="M6 6.6v12a2 2 0 0 2 2h8a2 2 0 0 2-2V6.6"></path>
+                </svg>
+                清空历史
+              </button>
+            </div>
+          </div>
+
+          <div class="setting danger-row">
+            <div class="setting-main">
+              <span class="setting-label">恢复默认设置</span>
+              <p class="field-hint">把全部设置重置为初始值，此操作不可撤销。</p>
+            </div>
+            <div class="setting-ctl">
+              <button type="button" class="btn danger" id="btn-reset">
+                <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M4.4 12a7.6 7.6 0 1 1 2.3 5.4"></path>
+                  <path d="M19.6 12a7.6 7.6 0 0 1-13.1-5.2"></path>
+                  <path d="M16.8 3.6v3.6h-3.6"></path>
+                  <path d="M7.2 20.4V16.8h3.6"></path>
+                </svg>
+                恢复默认
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== 关于 ==================== -->
+      <section class="section" id="about" data-section aria-labelledby="about-title">
+        <header class="sec-head">
+          <span class="sec-icon" data-tone="other" aria-hidden="true">
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="8.8"></circle>
+              <path d="M12 15.8v-4.4"></path>
+              <path d="M12 8.4h.01"></path>
+            </svg>
+          </span>
+          <div class="grow">
+            <h2 id="about-title">关于</h2>
+            <p class="sec-desc">版本信息、功能一览与开源许可说明。</p>
+          </div>
+        </header>
+
+        <div class="card glass sec-card about-hero">
+          <div class="about-brand">
+            <span class="about-logo" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 4.4v8.2"></path>
+                <path d="M8.8 9.6 12 12.8l3.2-3.2"></path>
+                <path d="M5.2 15.4v1.4a2.7 2.7 0 0 0 2.7 2.7h8.2a2.7 2.7 0 0 0 2.7-2.7v-1.4"></path>
+              </svg>
+            </span>
+            <div class="grow">
+              <h3 class="brand-text">Edge Resource Downloader</h3>
+              <p class="muted">一键扫描页面中的视频、图片与音频，自由勾选后批量下载。</p>
+            </div>
+            <span class="tag" id="about-version">v1.0.0</span>
+          </div>
+
+          <div class="meta-grid">
+            <div class="meta-item"><span class="dim">版本</span><b id="about-version-num">1.0.0</b></div>
+            <div class="meta-item"><span class="dim">清单</span><b>Manifest V3</b></div>
+            <div class="meta-item"><span class="dim">最低内核</span><b>Edge / Chrome 116+</b></div>
+            <div class="meta-item"><span class="dim">许可证</span><b>MIT</b></div>
+          </div>
+        </div>
+
+        <div class="card glass sec-card">
+          <div class="card-head">
+            <span class="card-title">功能一览</span>
+            <span class="tag">v1</span>
+          </div>
+          <ul class="feature-grid">
+            <li>
+              <span class="feat-icon" data-tone="image" aria-hidden="true">
+                <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.4" y="4.4" width="17.2" height="15.2" rx="2.4"></rect><circle cx="8.6" cy="9.6" r="1.6"></circle><path d="M4.2 17.2 9.4 12l4.2 4 3-2.8 3.2 4"></path></svg>
+              </span>
+              <b>多类型扫描</b>
+              <span class="dim">图片 / 视频 / 音频 / 其他资源一网打尽</span>
+            </li>
+            <li>
+              <span class="feat-icon" data-tone="video" aria-hidden="true">
+                <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.8" y="5.4" width="18.4" height="13.2" rx="2.4"></rect><path d="M10.4 9.6l4.2 2.4-4.2 2.4z"></path></svg>
+              </span>
+              <b>视频封面与时长</b>
+              <span class="dim">扫描时读取 poster、尺寸与时长</span>
+            </li>
+            <li>
+              <span class="feat-icon" data-tone="brand" aria-hidden="true">
+                <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.6v9"></path><path d="M8.4 9 12 12.6 15.6 9"></path><path d="M4.8 15.6v1.6a2.4 2.4 0 0 0 2.4 2.4h9.6a2.4 2.4 0 0 0 2.4-2.4v-1.6"></path></svg>
+              </span>
+              <b>批量下载</b>
+              <span class="dim">按类型分组、并发控制与冲突策略</span>
+            </li>
+            <li>
+              <span class="feat-icon" data-tone="audio" aria-hidden="true">
+                <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.6v2.1M12 19.3v2.1M3.6 12v.1M4.4 7.2l1.5 1.5M18 5.4l1.6 1.8M6 17.6 4.4 19.4M18 17.6l1.6 1.8"></path><circle cx="12" cy="12" r="4.6"></circle></svg>
+              </span>
+              <b>主题与视图</b>
+              <span class="dim">跟随系统 / 浅色 / 深色，网格或列表</span>
+            </li>
+            <li>
+              <span class="feat-icon" data-tone="ok" aria-hidden="true">
+                <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-3.7 7-9.2V5.6L12 2.6 5 5.6V11.8C5 17.3 12 21 12 21"></path></svg>
+              </span>
+              <b>隐私优先</b>
+              <span class="dim">不采集不上传，点击后才扫描</span>
+            </li>
+            <li>
+              <span class="feat-icon" data-tone="other" aria-hidden="true">
+                <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4.6 6.6h14.8M4.6 12h14.8M4.6 17.4h9.4"></path></svg>
+              </span>
+              <b>快捷键与右键菜单</b>
+              <span class="dim">Alt+Shift+R 随时唤起面板</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="card glass sec-card">
+          <div class="setting">
+            <div class="setting-main">
+              <span class="setting-label">查看扩展清单</span>
+              <p class="field-hint">打开 <code>manifest.json</code>，确认权限、注入范围与版本号。</p>
+            </div>
+            <div class="setting-ctl">
+              <a class="btn" id="link-manifest" href="../manifest.json" target="_blank" rel="noopener noreferrer">
+                <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M13.6 4.4H18.6A1.8 1.8 0 0 20.4 6.2v12.2a1.8 1.8 0 0 1-1.8 1.8H13.6"></path>
+                  <path d="M4 12h9.6"></path>
+                  <path d="M10.2 8.4 13.8 12l-3.6 3.6"></path>
+                </svg>
+                manifest.json
+              </a>
+            </div>
+          </div>
+
+          <div class="setting">
+            <div class="setting-main">
+              <span class="setting-label">开源许可</span>
+              <p class="field-hint">基于 MIT 许可证开源，可自由使用、修改与分发，请保留版权声明。</p>
+            </div>
+            <div class="setting-ctl"><span class="tag">MIT License</span></div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="page-foot">
+        <span class="dim">Edge Resource Downloader · v<span id="foot-version">1.0.0</span> · Manifest V3</span>
+        <span class="foot-sep" aria-hidden="true"></span>
+        <span class="dim">所有设置自动保存，仅存于本机</span>
+      </footer>
+    </main>
+  </div>
+
+  <!-- 保存提示（页脚浮标） -->
+  <div class="savebar" aria-live="polite" aria-atomic="true">
+    <div id="save-indicator" class="save-indicator" data-state="idle">
+      <span class="si-dot" aria-hidden="true"></span>
+      <svg class="si-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.8 12.6 9.4 17.2 19.2 7"></path></svg>
+      <span class="si-text">已保存</span>
+    </div>
+  </div>
+
+  <!-- 页内确认对话框 -->
+  <div class="dialog-host hidden" id="confirm-dialog" role="dialog" aria-modal="true" aria-labelledby="confirm-title" aria-describedby="confirm-body">
+    <div class="dialog card glass pop-in">
+      <span class="dialog-icon" aria-hidden="true">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10.6 3.4h2.8A8.6 8.6 0 0 0 21.4 12a8.6 8.6 0 0 0-8 8.6h-2.8A8.6 8.6 0 0 0 2.6 12a8.6 8.6 0 0 0 8 8.6"></path>
+          <path d="M12 8v4.4"></path>
+          <path d="M12 15.6h.01"></path>
+        </svg>
+      </span>
+      <h3 id="confirm-title">确认操作</h3>
+      <p id="confirm-body" class="muted">该操作不可撤销，确定继续吗？</p>
+      <div class="dialog-actions">
+        <button type="button" class="btn ghost" id="confirm-cancel">取消</button>
+        <button type="button" class="btn danger" id="confirm-ok">确认</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 提示条 -->
+  <div id="toast-host" class="toast-host" role="status" aria-live="polite"></div>
+
+  <!-- 导入设置用的隐藏文件选择器 -->
+  <input type="file" id="import-file" class="hidden" accept=".json,application/json">
+
+  <script type="module" src="./options.js"></script>
+</body>
+</html>

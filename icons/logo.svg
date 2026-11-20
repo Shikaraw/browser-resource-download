@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128" role="img" aria-label="Edge Resource Downloader">
+<defs><linearGradient id="g" x1="0" y1="0" x2="128" y2="128" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#6366f1"/><stop offset="1" stop-color="#22d3ee"/></linearGradient></defs>
+<rect x="5" y="5" width="118" height="118" rx="29" fill="url(#g)"/>
+<path d="M96.058 29.635Q90 26 90 33.065L90 48.935Q90 56 96.058 52.365L109.283 44.43Q115 41 109.283 37.57Z" fill="#fff" fill-opacity="0.15"/>
+<rect x="34" y="96" width="60" height="12" rx="6" fill="#fff"/>
+<path d="M56 28a8 8 0 0 1 8 -8h0a8 8 0 0 1 8 8v24h-16Z" fill="#fff"/>
+<path d="M44.243 56.243Q34 46 48.485 46L79.515 46Q94 46 83.757 56.243L68.243 71.757Q64 76 59.757 71.757Z" fill="#fff"/>
+<rect x="5.75" y="5.75" width="116.5" height="116.5" rx="28.25" fill="none" stroke="#fff" stroke-opacity="0.22" stroke-width="1.5"/>
+</svg>

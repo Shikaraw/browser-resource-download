@@ -1,0 +1,54 @@
+# ---- 构建产物 ----
+# dist/ 里的 zip 由 `node tests/package.mjs` 生成，可用 Release 分发，
+# 但为了让仓库可追溯、避免二进制漂移，这里选择**提交**它。
+# 如果你更希望只发 Release，取消下面一行的注释即可：
+# dist/
+
+# ---- 依赖与缓存（当前项目零依赖，仅作保险）----
+node_modules/
+.pnpm-store/
+.npm/
+*.log
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ---- 测试与运行时临时文件 ----
+# E2E 会创建带随机后缀的临时用户目录，异常中断时可能残留
+erd-e2e-*/
+erd-scan-*/
+erd-shots-*/
+popshot-*/
+final-*/
+widthdiag-*/
+narrow-*/
+chprobe-*/
+chmanual-*/
+clipreal-*/
+offscreen-*/
+repo-inspect-*/
+*.tmp
+*.bak
+_*.mjs
+
+# ---- 编辑器与操作系统 ----
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ---- Python（icons/*.py 用到的缓存）----
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# ---- 本地环境变量与密钥（防止误提交）----
+.env
+.env.local
+*.pem
+*.key

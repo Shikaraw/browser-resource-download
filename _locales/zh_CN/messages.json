@@ -1,0 +1,14 @@
+{
+  "extName": {
+    "message": "Edge Resource Downloader",
+    "description": "扩展名称（英文）"
+  },
+  "extShortName": {
+    "message": "资源下载器",
+    "description": "扩展简称，显示在部分 UI 位置"
+  },
+  "extDescription": {
+    "message": "一键扫描当前页面中的视频、图片、音频等可下载资源，自由勾选后批量下载。默认不采集，安全可控。",
+    "description": "扩展描述"
+  }
+}

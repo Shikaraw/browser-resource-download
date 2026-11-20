@@ -1,0 +1,31 @@
+# 统一换行符，避免 Windows 上 CRLF 污染、导致 diff 噪音
+# 说明：扩展源码在浏览器里运行，LF 是安全且跨平台的选择。
+* text=auto eol=lf
+
+# 明确的文本类型
+*.js      text eol=lf
+*.mjs     text eol=lf
+*.json    text eol=lf
+*.css     text eol=lf
+*.html    text eol=lf
+*.md      text eol=lf
+*.svg     text eol=lf
+*.py      text eol=lf
+*.m3u8    text eol=lf
+.gitignore     text eol=lf
+.gitattributes text eol=lf
+
+# 明确的二进制类型：不要做任何换行转换，也不要尝试 diff
+*.png     binary
+*.jpg     binary
+*.jpeg    binary
+*.webp    binary
+*.gif     binary
+*.ico     binary
+*.mp4     binary
+*.webm    binary
+*.mp3     binary
+*.m4a     binary
+*.wav     binary
+*.ts      binary
+*.zip     binary

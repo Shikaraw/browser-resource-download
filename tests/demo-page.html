@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>资源下载器 · 测试页</title>
+    <meta property="og:image" content="fixtures/photo-d.png" />
+    <style>
+      :root {
+        --p: #6366f1;
+        --c: #22d3ee;
+      }
+      body {
+        margin: 0;
+        font: 15px/1.6 "Segoe UI", "Microsoft YaHei UI", system-ui, sans-serif;
+        color: #e9edf7;
+        background: #0b0f19;
+        padding: 32px;
+      }
+      h1 {
+        font-size: 24px;
+        background: linear-gradient(135deg, var(--p), var(--c));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      section {
+        margin: 32px 0;
+      }
+      h2 {
+        font-size: 15px;
+        color: #a6b0c8;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+        padding-bottom: 8px;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 12px;
+      }
+      .tile {
+        border-radius: 12px;
+        overflow: hidden;
+        background: #1a2235;
+        border: 1px solid rgba(148, 163, 184, 0.16);
+      }
+      .tile img {
+        width: 100%;
+        height: 110px;
+        object-fit: cover;
+        display: block;
+      }
+      .tile span {
+        display: block;
+        padding: 6px 9px;
+        font-size: 11px;
+        color: #a6b0c8;
+      }
+      .bg-sample {
+        height: 140px;
+        border-radius: 12px;
+        background-image: url("fixtures/css-background.jpg");
+        background-size: cover;
+        display: grid;
+        place-items: center;
+        color: #fff;
+        font-weight: 600;
+      }
+      audio,
+      video {
+        border-radius: 12px;
+        background: #000;
+        max-width: 100%;
+      }
+      .row {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        align-items: flex-start;
+      }
+      code {
+        font-family: Consolas, monospace;
+        color: var(--c);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>资源下载器 · 测试页</h1>
+    <p>
+      本页面故意放置多种媒体资源，用于验证扫描器的收集能力。
+      请安装扩展后点击工具栏图标 → <code>扫描本页资源</code>。
+    </p>
+
+    <section>
+      <h2>图片 (img / srcset / alt)</h2>
+      <div class="grid">
+        <div class="tile">
+          <img src="fixtures/photo-a.jpg" alt="风景一号" width="800" height="600" />
+          <span>风景一号 · 800×600</span>
+        </div>
+        <div class="tile">
+          <img src="fixtures/photo-b.jpg" alt="风景二号" width="1200" height="800" />
+          <span>风景二号 · 1200×800</span>
+        </div>
+        <div class="tile">
+          <img
+            src="fixtures/photo-c.webp"
+            srcset="fixtures/photo-c.webp 640w, fixtures/photo-d.png 1024w"
+            alt="响应式图片"
+            width="640"
+            height="640"
+          />
+          <span>响应式 srcset</span>
+        </div>
+        <div class="tile">
+          <!-- 1x1 像素埋点图，应被 minImageSize 过滤 -->
+          <img src="fixtures/pixel-1x1.png" alt="埋点像素" width="1" height="1" />
+          <span>1×1 埋点（应被过滤）</span>
+        </div>
+      </div>
+      <picture>
+        <source srcset="fixtures/photo-d.png" type="image/png" />
+        <img src="fixtures/avatar-small.png" alt="picture 元素" />
+      </picture>
+    </section>
+
+    <section>
+      <h2>CSS 背景图</h2>
+      <div class="bg-sample">这是通过 CSS background-image 加载的图片</div>
+    </section>
+
+    <section>
+      <h2>视频 (video / source / poster)</h2>
+      <div class="row">
+        <video controls width="420" poster="fixtures/video-poster.jpg" preload="metadata">
+          <source src="fixtures/clip-a.mp4" type="video/mp4" />
+        </video>
+        <video controls width="420" src="fixtures/clip-b.webm" preload="metadata"></video>
+      </div>
+    </section>
+
+    <section>
+      <h2>音频 (audio / source)</h2>
+      <div class="row">
+        <audio controls src="fixtures/tone-a.mp3"></audio>
+        <audio controls>
+          <source src="fixtures/tone-b.m4a" type="audio/mp4" />
+        </audio>
+        <audio controls src="fixtures/tone-c.wav"></audio>
+      </div>
+    </section>
+
+    <section>
+      <h2>直链 (a[href] / a[download])</h2>
+      <ul>
+        <li><a href="fixtures/photo-b.jpg">图片直链</a></li>
+        <li><a href="fixtures/clip-a.mp4" download="clip-a.mp4">视频直链下载</a></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>流媒体清单 (m3u8)</h2>
+      <ul>
+        <li><a href="fixtures/stream.m3u8">HLS 测试流</a></li>
+      </ul>
+    </section>
+  </body>
+</html>
